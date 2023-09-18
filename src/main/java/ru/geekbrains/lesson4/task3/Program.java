@@ -2,12 +2,9 @@ package ru.geekbrains.lesson4.task3;
 
 import ru.geekbrains.lesson4.task3.domain.Customer;
 import ru.geekbrains.lesson4.task3.domain.CustomerProvider;
-import ru.geekbrains.lesson4.task3.domain.NoCustomerFundsException;
 import ru.geekbrains.lesson4.task3.domain.TicketProvider;
 import ru.geekbrains.lesson4.task3.services.*;
 import ru.geekbrains.lesson4.task3.services.persistance.Database;
-
-import java.util.Date;
 
 public class Program {
 
@@ -42,25 +39,11 @@ public class Program {
             if(mobileApp.getTickets().isEmpty()) {
                 mobileApp.buyTicket("1111");
             }
-            String id = mobileApp.getTickets().stream().toList().get(0).getQrcode();
             busStation.checkTicket(mobileApp.getTickets().stream().toList().get(0).getQrcode());
-
-        } catch (NoCustomerFundsException e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
-        //if (){
-          //  System.out.println("Клиент успешно купил билет.");
-            //mobileApp.searchTicket(new Date());
-            /*Collection<Ticket> tickets = mobileApp.getTickets();
-            if (busStation.checkTicket(tickets.stream().findFirst().get().getQrcode())){
-                System.out.println("Клиент успешно прошел в автобус.");
-            }*/
-        }
-
-
-
-
+    }
 }
 
 
